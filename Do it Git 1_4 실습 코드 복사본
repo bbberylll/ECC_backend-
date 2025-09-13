@@ -1,0 +1,109 @@
+$ git config --global user.name "사용자 이름"
+$ git config --global user.email "사용자 이메일"
+
+
+cd Documents
+
+mkdir test
+
+rm -r test
+
+
+## 2장 실습 시작 
+$ cd c:
+$ mkdir hello-git
+$ cd hello-git
+
+$ ls -la
+
+$ git init
+
+$ ls -la
+
+git commit -m "회원가입 기능 추가"
+
+git init
+
+git add index.html
+git commit -m "index.html 파일 추가"
+
+
+git commit -am "커밋 메시지"
+git commit -am "message2"
+
+git log
+
+$ git status
+$ git diff
+
+$ git add hello.txt  # 변경 사항을 스테이징
+$ git commit -m "hello.txt에서 숫자 2를 two로 변경"
+
+$ git commit -am "hello.txt 원래 상태로 복원"
+
+
+git restore 파일명 # 작업 트리에서 수정 취소 
+
+
+git restore --staged 파일명 # 스테이징된 파일 되돌리기 
+
+
+git reset HEAD^ # 가장 최근 커밋 취소 
+
+
+git reset --hard 해시값 # 특정 커밋으로 되돌리기 
+
+
+git revert 해시값 # 특정 커밋을 취소하는 새로운 커밋 생성
+
+
+git branch apple # apple 브랜치 생성 
+
+git branch google 
+# google 브랜치 생성 
+
+git branch ms 
+# ms 브랜치 생성 
+
+git branch 
+# 브랜치 목록 확인 
+
+git switch apple 
+# apple 브랜치로 전환
+
+
+git log --oneline --branches 
+# 브랜치별 최신 커밋 확인 
+
+git log --oneline --graph 
+# 브랜치 구조 그래프 형태로 확인 git log 브랜치1..브랜치2 # 브랜치 간 차이점 비교
+
+
+git switch main 
+# 메인 브랜치로 전환 
+
+git merge apple 
+# apple 브랜치 병합 
+
+git branch -d apple 
+# apple 브랜치 삭제
+
+
+git remote add origin 원격저장소URL 
+# 원격 저장소 연결 
+
+git remote -v 
+# 원격 저장소 확인
+
+
+git push origin main 
+# 원격 저장소에 커밋 업로드
+
+git pull origin main 
+# 원격 저장소에서 변경 사항 가져오기
+
+
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com" # SSH 키 생성 
+# GitHub에 공개키 등록 후 SSH 연결 
+
+git remote set-url origin git@github.com:사용자명/저장소명.git
