@@ -1,0 +1,87 @@
+$git clone https://github.com/bbberylll/ECC_backend- git_home
+
+$git clone https://github.com/bbberylll/ECC_backend- git_office
+
+
+$ls -la
+
+
+$cd git_home
+$git log
+
+
+$cd ~/git_office
+$git log
+
+
+$git remote -v
+
+
+
+$cd ~/git_home
+$vim f1.txt
+
+
+$git commit -am "add c"
+$git push
+
+
+$cd ~/git_office
+$git pull
+
+$vim f1.txt
+
+
+$ fit commit -am "add d"
+$ git push
+
+
+$ cd ~/git_home
+git pull
+git log
+
+$ cd ~/git_home
+$ git log
+
+
+$ vim f3.txt
+
+
+$ git add f3.txt
+$ git commit -m "create f3.txt"
+
+
+$git log --oneline
+
+
+$git status
+
+
+$git push
+$ git log --oneline
+
+
+$cd ~/git_office
+$git fetch
+
+$ls -al
+$git log --oneline
+
+$git status
+$git diff HEAD origin/main
+
+
+$git merge origin/main
+
+$git log --oneline
+
+
+
+$git pull
+
+$git switch apple
+$vim apple.txt
+$git add apple.txt
+$git commit -m"초안작성"
+
+$git push -u origin apple
