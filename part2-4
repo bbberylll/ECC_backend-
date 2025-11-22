@@ -1,0 +1,111 @@
+// ArticleForm.java
+package com.example.firstproject.dto;
+
+import com.example.firstproject.entity.Article;
+import lombok.AllArgsConstructor;
+import lombok.ToString;
+
+@AllArgsConstructor
+@ToString
+public class ArticleForm {
+
+    private String title;
+    private String content;
+
+//    public ArticleForm(String title, String content) {
+//        this.title = title;
+//        this.content = content;
+//    }
+
+//    @Override
+//    public String toString() {
+//        return "ArticleForm{" +
+//                "title='" + title + '\'' +
+//                ", content='" + content + '\'' +
+//                '}';
+//    }
+
+    public Article toEntity() {
+        return new Article(null, title, content);
+    }
+}
+
+
+
+// Article.java
+package com.example.firstproject.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Entity
+public class Article {
+    @Id
+    @GeneratedValue
+    private Long id;
+    @Column
+    private String title;
+    @Column
+    private String content;
+
+//    public Article(Long id, String title, String content) {
+//        this.id = id;
+//        this.title = title;
+//        this.content = content;
+//    }
+
+//    @Override
+//    public String toString() {
+//        return "Article {" + "id=" + id + ", title=" + title + ", content=" + content + '}';
+//    }
+}
+
+
+
+// ArticleController.java
+package com.example.firstproject.controller;
+
+import com.example.firstproject.dto.ArticleForm;
+import com.example.firstproject.entity.Article;
+import com.example.firstproject.repository.ArticleRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Slf4j
+@Controller
+public class ArticleController {
+    @Autowired
+    private ArticleRepository articleRepository;                // 2. articleRepository 객체 선언
+    
+    @GetMapping("/articles/new")
+    public String newArticleForm() {
+        return "articles/new";
+    }
+
+    @PostMapping("/articles/create")
+    public String createArticle(ArticleForm form) {
+//        System.out.println(form.toString());
+        log.info(form.toString());
+        // 1. DTO를 엔티티로 변환
+        Article article = form.toEntity();
+//        System.out.println(article.toString());
+        log.info(article.toString());
+        // 2. 리파지터리로 엔티티를 DB에 저장
+        Article saved = articleRepository.save(article);        // 1. article 엔티티를 저장해 saved 객체에 반환
+//        System.out.println(saved.toString());
+        log.info(saved.toString());
+        return "";
+    }
+    
+}
